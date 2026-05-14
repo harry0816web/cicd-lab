@@ -3,7 +3,7 @@ name: CI 112550097
 on:
   push:
     branches:
-      - "**"
+      - '**'
   pull_request:
 
 permissions:
@@ -20,7 +20,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: '22'
           cache: npm
 
       - name: Install dependencies
@@ -38,7 +38,7 @@ jobs:
           npm test -- --reporter=default --reporter=junit --outputFile.junit=reports/vitest-junit.xml
 
       - name: Upload test report artifact
-        if: always()
+        if: always() && hashFiles('reports/vitest-junit.xml') != ''
         uses: actions/upload-artifact@v4
         with:
           name: test-report
@@ -46,11 +46,10 @@ jobs:
           if-no-files-found: error
 
       - name: Publish test results (summary)
-        if: always()
+        if: always() && hashFiles('reports/vitest-junit.xml') != ''
         uses: dorny/test-reporter@v1
         with:
           name: Vitest (JUnit)
           path: reports/vitest-junit.xml
           reporter: java-junit
-          fail-on-error: "false"
-
+          fail-on-error: 'false'

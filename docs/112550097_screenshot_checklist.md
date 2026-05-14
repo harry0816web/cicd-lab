@@ -19,6 +19,7 @@
 ## B. 故意製造「失敗」案例（建議：TypeScript 型別錯誤，最穩）
 
 ### B1. 製造錯誤
+
 1. 在任一 `src/**/*.ts` 製造型別錯誤（例：把字串指派給 number）
 2. push 變更
 3. 到 Actions 看 run 失敗（typecheck step 會紅）
@@ -27,6 +28,7 @@
    - 失敗 step log（錯誤訊息要拍到）
 
 ### B2. 修正錯誤
+
 1. 把型別錯誤修回來
 2. 再 push
 3. 截圖成功 run（可用同一張成功截圖，也可再拍一張）
@@ -35,4 +37,3 @@
 
 - Prettier 格式錯誤：故意把單引號改成雙引號、或破壞縮排，讓 `npm run format:check` 失敗
 - 測試失敗：改壞 handler 回傳，讓 `npm test` fail
-
