@@ -1,7 +1,5 @@
 import Fastify, { FastifyServerOptions } from 'fastify';
 
-const _demoTypeError: number = 'not a number';
-
 export function buildApp(options: FastifyServerOptions = {}) {
   const app = Fastify({
     logger: options.logger ?? true,
